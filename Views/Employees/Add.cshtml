@@ -1,44 +1,54 @@
-﻿@model ASPNETMVCCRUD.Models.AddEmployeeViewModel
-@{
-}
-<h1>Add Employee</h1>
-<select>
+﻿@using Microsoft.Extensions.Localization
+@model ASPNETMVCCRUD.Models.AddEmployeeViewModel
+
+@inject IViewLocalizer Localizer
+
+<h1>@Localizer["Add Employee"]</h1>
+<select id="languageSelect">
     <option>Select A Language</option>
-    <option>French</option>
-    <option>Chinese</option>
-    <option>Spanish</option>
-    <option>Hindi</option>
-    <option>English</option>
+    <option data-href="?culture=de-DE">Germany</option>
+    <option data-href="?culture=en-US">English</option>
 </select>
 
 <form method="post" action="Add" class="mt-5">
     <div class="mb-3">
-        <label for="" class="form-label">Name</label>
+        <label for="" class="form-label">@Localizer["Name"]</label>
         <input type="text" class="form-control" asp-for="Name">
         
     </div>
     <div class="mb-3">
-    <label for="" class="form-label">Email Address</label>
+        <label for="" class="form-label">@Localizer["Email Address"]</label>
     <input type="email" class="form-control" asp-for="Email">
 
     </div>
     <div class="mb-3">
-    <label for="" class="form-label">Salary</label>
+    <label for="" class="form-label">@Localizer["Salary"]</label>
     <input type="number" class="form-control" asp-for="Salary">
 
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">Department</label>
+        <label for="" class="form-label">@Localizer["Department"]</label>
         <input type="text" class="form-control" asp-for="Department">
 
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">Date Of Birth</label>
+        <label for="" class="form-label">@Localizer["Date Of Birth"]</label>
         <input type="date" class="form-control" asp-for="DateOfBirth">
         <a href="d:\asp.net core 6  web api\aspnetmvccrud\aspnetmvccrud\views\employees\add.cshtml">d:\asp.net core 6  web api\aspnetmvccrud\aspnetmvccrud\views\employees\add.cshtml</a>
     </div>
     
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">@Localizer["Submit"]</button>
     
 </form>
+
+<script>
+    document.getElementById("languageSelect").addEventListener("change", function () {
+        var selectedOption = this.options[this.selectedIndex];
+        var url = selectedOption.getAttribute("data-href");
+
+        if (url && url !== "") {
+            window.location.href = url;
+        }
+    });
+</script>

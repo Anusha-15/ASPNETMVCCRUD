@@ -74,7 +74,7 @@ namespace ASPNETMVCCRUD.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpPut]
 
         public async Task<IActionResult> View (UpdateEmployeeViewModel model)
         {
@@ -96,7 +96,7 @@ namespace ASPNETMVCCRUD.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpDelete]
 
         public async Task<IActionResult> Delete(UpdateEmployeeViewModel model)
         {
